@@ -40,4 +40,4 @@ mybatis:
   - classpath:/mappers/*.xml
 logging:
   level:
-    '[org.springframework]': debug
+    '[org.springframework]': info
