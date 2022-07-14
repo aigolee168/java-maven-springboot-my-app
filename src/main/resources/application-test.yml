@@ -1,0 +1,7 @@
+spring:
+  main:
+    banner-mode: off
+    
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

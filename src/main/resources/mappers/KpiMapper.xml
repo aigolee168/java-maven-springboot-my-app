@@ -1,0 +1,19 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bf.app.mapper.KpiMapper">
+	<select id="countUser" resultType="int">
+		select count(*) from sys_user
+	</select>
+	<select id="countAuthorityByParentId" resultType="int">
+		select count(*) from authority where parent_id = #{parentId}
+	</select>
+	<select id="selectRechargeLog" resultType="com.bf.app.vo.RechargeLog">
+		select * from t_rechargelog
+	</select>
+	<select id="getDailyPayCount" resultType="com.bf.app.vo.DailyPayCount">
+		select
+			date(date) date, 
+			count(distinct pid) count 
+		from t_rechargelog 
+		group by date(date)
+	</select>
+</mapper>

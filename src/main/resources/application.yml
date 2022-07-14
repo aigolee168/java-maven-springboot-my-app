@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: java-maven-springboot-my-app
+  web:
+    resources:
+      static-locations: classpath:/static/, classpath:/templates/
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: America/Los_Angeles
+  sql:
+    init:
+      mode: always
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+    defer-datasource-initialization: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+server:
+  port: 8080
+  servlet:
+    context-path: /demo
+    session:
+      timeout: 4h
+  tomcat:
+    accesslog:
+      enabled: true
+    basedir: ./build
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+mybatis:
+  mapper-locations:
+  - classpath:/mappers/*.xml
+logging:
+  level:
+    '[org.springframework]': debug
