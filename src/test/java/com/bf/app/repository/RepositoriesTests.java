@@ -6,7 +6,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -15,12 +17,14 @@ import com.bf.app.entities.Role;
 import com.bf.app.entities.User;
 
 @ActiveProfiles("test")
+@ImportAutoConfiguration(classes = MybatisAutoConfiguration.class)
 @DataJpaTest(properties = {
     "spring.jpa.defer-datasource-initialization=true",
     "spring.jpa.generate-ddl=false",
     "spring.jpa.hibernate.ddl-auto=none",
     "spring.sql.init.schema-locations=classpath:schema-test.sql",
-    "spring.sql.init.data-locations=classpath:data-test.sql"})
+    "spring.sql.init.data-locations=classpath:data-test.sql"
+})
 class RepositoriesTests {
 	
 	@Autowired
