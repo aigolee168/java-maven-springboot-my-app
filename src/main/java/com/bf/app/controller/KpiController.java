@@ -14,42 +14,42 @@ import com.bf.app.vo.DailyPayCount;
 @RestController
 @RequestMapping("kpi")
 public class KpiController {
-	
-	private KpiService kpiService;
+    
+    private KpiService kpiService;
 
-	@Autowired
-	public void setKpiService(KpiService kpiService) {
-		this.kpiService = kpiService;
-	}
-	
-	@GetMapping("countUser")
-	public int countUser() {
-		return kpiService.countUser();
-	}
-	
-	@GetMapping("countAuthorityByParentId")
-	public int countAuthorityByParentId(long parentId) {
-		return kpiService.countAuthorityByParentId(parentId);
-	}
-	
-	@GetMapping("getDailyRevenue")
-	public Map<String, Integer> getDailyRevenue() {
-		return kpiService.getDailyRevenue();
-	}
-	
-	@GetMapping("getDailyPayCount")
-	public Map<String, Integer> getDailyPayCount() {
-		return kpiService.getDailyPayCount();
-	}
-	
-	@GetMapping("getDailyPayCount2")
-	public Map<String, Integer> getDailyPayCount2() {
-		return kpiService.getDailyPayCount2();
-	}
-	
-	@GetMapping("getDailyPayCount3")
-	public List<DailyPayCount> getDailyPayCount3() {
-		return kpiService.getDailyPayCount3();
-	}
+    @Autowired
+    public void setKpiService(KpiService kpiService) {
+        this.kpiService = kpiService;
+    }
+    
+    @GetMapping("countUser")
+    public int countUser() {
+        return kpiService.countUser();
+    }
+    
+    @GetMapping("countAuthorityByParentId")
+    public int countAuthorityByParentId(long parentId) {
+        return kpiService.countAuthorityByParentId(parentId);
+    }
+    
+    @GetMapping("getDailyRevenue")
+    public Map<String, Integer> getDailyRevenue() {
+        return kpiService.getDailyRevenue();
+    }
+    
+    @GetMapping("getDailyPayCount")
+    public Map<String, Integer> getDailyPayCount() {
+        return kpiService.getDailyPayCount();
+    }
+    
+    @GetMapping("getDailyPayCount2")
+    public Map<String, Integer> getDailyPayCount2() {
+        return kpiService.getDailyPayCount2();
+    }
+    
+    @GetMapping("getDailyPayCount3")
+    public List<DailyPayCount> getDailyPayCount3() {
+        return kpiService.getDailyPayCount3();
+    }
 
 }

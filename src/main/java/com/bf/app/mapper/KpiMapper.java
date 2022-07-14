@@ -7,12 +7,12 @@ import com.bf.app.vo.RechargeLog;
 
 public interface KpiMapper {
 
-	int countUser();
+    int countUser();
 
-	int countAuthorityByParentId(long parentId);
-	
-	List<RechargeLog> selectRechargeLog();
-	
-	List<DailyPayCount> getDailyPayCount();
+    int countAuthorityByParentId(long parentId);
+    
+    List<RechargeLog> selectRechargeLog();
+    
+    List<DailyPayCount> getDailyPayCount();
 
 }

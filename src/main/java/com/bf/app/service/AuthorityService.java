@@ -13,25 +13,25 @@ import com.bf.app.util.Trees;
 
 @Service
 public class AuthorityService {
-	
-	private AuthorityRepository authorityRepository;
+    
+    private AuthorityRepository authorityRepository;
 
-	@Autowired
-	public void setAuthorityRepository(AuthorityRepository authorityRepository) {
-		this.authorityRepository = authorityRepository;
-	}
-	
-	public Set<Authority> getDescendentAuthTree(long parentId) {
-		List<Authority> list = authorityRepository.findAll();
-		return Trees.list2tree(new HashSet<>(list), parentId);
-	}
-	
-	public List<Authority> findAllByRoleId(int roleId) {
-		return authorityRepository.findAllByRoleId(roleId);
-	}
-	
-	public List<Authority> findAll() {
-		return authorityRepository.findAll();
-	}
+    @Autowired
+    public void setAuthorityRepository(AuthorityRepository authorityRepository) {
+        this.authorityRepository = authorityRepository;
+    }
+    
+    public Set<Authority> getDescendentAuthTree(long parentId) {
+        List<Authority> list = authorityRepository.findAll();
+        return Trees.list2tree(new HashSet<>(list), parentId);
+    }
+    
+    public List<Authority> findAllByRoleId(int roleId) {
+        return authorityRepository.findAllByRoleId(roleId);
+    }
+    
+    public List<Authority> findAll() {
+        return authorityRepository.findAll();
+    }
 
 }

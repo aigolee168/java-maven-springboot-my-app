@@ -13,17 +13,17 @@ import com.bf.app.service.AuthorityService;
 @RestController
 @RequestMapping("authority")
 public class AuthorityController {
-	
-	private AuthorityService authorityService;
-	
-	@Autowired
-	public void setAuthorityService(AuthorityService authorityService) {
-		this.authorityService = authorityService;
-	}
+    
+    private AuthorityService authorityService;
+    
+    @Autowired
+    public void setAuthorityService(AuthorityService authorityService) {
+        this.authorityService = authorityService;
+    }
 
-	@GetMapping
-	public Set<Authority> getAuthTree(long parentId) {
-		return authorityService.getDescendentAuthTree(parentId);
-	}
+    @GetMapping
+    public Set<Authority> getAuthTree(long parentId) {
+        return authorityService.getDescendentAuthTree(parentId);
+    }
 
 }

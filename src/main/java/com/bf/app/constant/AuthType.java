@@ -16,11 +16,11 @@ public enum AuthType {
      * 常规节点,可以包含常规节点
      */
     NORMAL((byte)2);
-	
-	private final byte value;
-	
-	private AuthType(byte value) {
-		this.value = value;
-	}
-	
+    
+    private final byte value;
+    
+    private AuthType(byte value) {
+        this.value = value;
+    }
+    
 }

@@ -15,23 +15,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 @RequestMapping("file")
 public class FileController {
-	
-	@Autowired
-	private ObjectMapper objectMapper;
-	
-	@GetMapping("streamingUser")
-	public ResponseEntity<StreamingResponseBody> streamingUser() {
-		return ResponseEntity.ok()
-				.contentType(MediaType.APPLICATION_OCTET_STREAM)
-				.body(response -> {
-					Executors.repeatingIOTask(15, index -> {
-						User user = new User("user " + index, "password " + index, "nickname " + index);
-						String line = objectMapper.writeValueAsString(user) + "\n";
-						response.write(line.getBytes());
-						response.flush();
-						Executors.tryExceptionTask(() -> Thread.sleep(1000));
-					});
-				});
-	}
+    
+    @Autowired
+    private ObjectMapper objectMapper;
+    
+    @GetMapping("streamingUser")
+    public ResponseEntity<StreamingResponseBody> streamingUser() {
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(response -> {
+                    Executors.repeatingIOTask(15, index -> {
+                        User user = new User("user " + index, "password " + index, "nickname " + index);
+                        String line = objectMapper.writeValueAsString(user) + "\n";
+                        response.write(line.getBytes());
+                        response.flush();
+                        Executors.tryExceptionTask(() -> Thread.sleep(1000));
+                    });
+                });
+    }
 
 }

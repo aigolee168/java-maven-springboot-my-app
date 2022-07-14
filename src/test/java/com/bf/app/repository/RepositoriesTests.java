@@ -26,43 +26,43 @@ import com.bf.app.entities.User;
     "spring.sql.init.data-locations=classpath:data-test.sql"
 })
 class RepositoriesTests {
-	
-	@Autowired
-	AuthorityRepository authorityRepository;
-	
-	@Autowired
-	RoleRepository roleRepository;
-	
-	@Autowired
-	UserRepository userRepository;
-	
-	@Order(1)
-	@Test
-	void authorityRepositoryTest() {
-		List<Authority> allAuthority = authorityRepository.findAll();
-		assertThat(allAuthority).isNotEmpty();
-	}
-	
-	@Order(2)
-	@Test
-	void roleRepository() {
-		Role role = roleRepository.save(new Role("管理员"));
-		List<Authority> allAuthority = authorityRepository.findAll();
-		assertThat(allAuthority).isNotEmpty();
-		for (Authority auth : allAuthority) {
-			authorityRepository.saveRoleAuthority(role.getId(), auth.getId());
-		}
-		List<Authority> authorityList = authorityRepository.findAllByRoleId(role.getId());
-		assertThat(authorityList).isNotEmpty();
-	}
-	
-	@Order(3)
-	@Test
-	void userRepositoryTest() {
-		User user = new User("lily", "123456", "Hello Kitty");
-		userRepository.save(user);
-		List<User> users = userRepository.findAll();
-		assertThat(users).isNotEmpty();
-	}
+    
+    @Autowired
+    AuthorityRepository authorityRepository;
+    
+    @Autowired
+    RoleRepository roleRepository;
+    
+    @Autowired
+    UserRepository userRepository;
+    
+    @Order(1)
+    @Test
+    void authorityRepositoryTest() {
+        List<Authority> allAuthority = authorityRepository.findAll();
+        assertThat(allAuthority).isNotEmpty();
+    }
+    
+    @Order(2)
+    @Test
+    void roleRepository() {
+        Role role = roleRepository.save(new Role("管理员"));
+        List<Authority> allAuthority = authorityRepository.findAll();
+        assertThat(allAuthority).isNotEmpty();
+        for (Authority auth : allAuthority) {
+            authorityRepository.saveRoleAuthority(role.getId(), auth.getId());
+        }
+        List<Authority> authorityList = authorityRepository.findAllByRoleId(role.getId());
+        assertThat(authorityList).isNotEmpty();
+    }
+    
+    @Order(3)
+    @Test
+    void userRepositoryTest() {
+        User user = new User("lily", "123456", "Hello Kitty");
+        userRepository.save(user);
+        List<User> users = userRepository.findAll();
+        assertThat(users).isNotEmpty();
+    }
 
 }

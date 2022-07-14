@@ -17,33 +17,33 @@ import com.bf.app.util.Trees;
 
 @Service
 public class UserService {
-	
-	private UserRepository userRepository;
-	
-	private RoleService roleService;
+    
+    private UserRepository userRepository;
+    
+    private RoleService roleService;
 
-	@Autowired
-	public void setUserRepository(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-	@Autowired
-	public void setRoleService(RoleService roleService) {
-		this.roleService = roleService;
-	}
-	
-	public Set<Authority> getAuthTree(int userId) {
-		List<Role> roles = roleService.findAllByUserId(userId);
-		Set<Authority> list = new HashSet<>();
-		for (Role role : roles) {
-			Set<Authority> roleAuthTree = roleService.getAuthTree(role.getId());
-			list.addAll(Trees.tree2list(roleAuthTree));
-		}
-		return Trees.list2tree(list, -1);
-	}
-	
-	public Page<User> findAll(Pageable pageable) {
-		return userRepository.findAll(pageable);
-	}
+    @Autowired
+    public void setRoleService(RoleService roleService) {
+        this.roleService = roleService;
+    }
+    
+    public Set<Authority> getAuthTree(int userId) {
+        List<Role> roles = roleService.findAllByUserId(userId);
+        Set<Authority> list = new HashSet<>();
+        for (Role role : roles) {
+            Set<Authority> roleAuthTree = roleService.getAuthTree(role.getId());
+            list.addAll(Trees.tree2list(roleAuthTree));
+        }
+        return Trees.list2tree(list, -1);
+    }
+    
+    public Page<User> findAll(Pageable pageable) {
+        return userRepository.findAll(pageable);
+    }
 
 }

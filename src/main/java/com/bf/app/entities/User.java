@@ -19,26 +19,26 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Table(name = "sys_user")
 public class User {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	private Date createTime = new Date();
-	
-	@NonNull
-	private String username;
-	
-	@NonNull
-	private String password;
-	
-	@NonNull
-	private String nickname;
-	
-	private Byte status = (byte) 0;
-	
-	private Date lastLoginTime;
-	
-	private Integer parentId = -1;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
+    private Date createTime = new Date();
+    
+    @NonNull
+    private String username;
+    
+    @NonNull
+    private String password;
+    
+    @NonNull
+    private String nickname;
+    
+    private Byte status = (byte) 0;
+    
+    private Date lastLoginTime;
+    
+    private Integer parentId = -1;
 
 }

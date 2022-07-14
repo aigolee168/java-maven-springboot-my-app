@@ -25,8 +25,8 @@ import lombok.ToString;
 @ToString(exclude = "children")
 @Entity
 public class Authority {
-	
-	@Id
+    
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
