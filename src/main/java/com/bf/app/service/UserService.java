@@ -17,9 +17,9 @@ import com.bf.app.util.Trees;
 
 @Service
 public class UserService {
-    
+
     private UserRepository userRepository;
-    
+
     private RoleService roleService;
 
     @Autowired
@@ -31,7 +31,7 @@ public class UserService {
     public void setRoleService(RoleService roleService) {
         this.roleService = roleService;
     }
-    
+
     public Set<Authority> getAuthTree(int userId) {
         List<Role> roles = roleService.findAllByUserId(userId);
         Set<Authority> list = new HashSet<>();
@@ -41,7 +41,7 @@ public class UserService {
         }
         return Trees.list2tree(list, -1);
     }
-    
+
     public Page<User> findAll(Pageable pageable) {
         return userRepository.findAll(pageable);
     }

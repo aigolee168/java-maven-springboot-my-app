@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DailyPayCount {
-    
+
     private String date;
     private int count;
 

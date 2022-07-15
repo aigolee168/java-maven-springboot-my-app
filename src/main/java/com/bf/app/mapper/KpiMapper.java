@@ -10,9 +10,9 @@ public interface KpiMapper {
     int countUser();
 
     int countAuthorityByParentId(long parentId);
-    
+
     List<RechargeLog> selectRechargeLog();
-    
+
     List<DailyPayCount> getDailyPayCount();
 
 }

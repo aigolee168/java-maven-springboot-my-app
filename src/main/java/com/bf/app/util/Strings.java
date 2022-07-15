@@ -4,15 +4,15 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class Strings {
-    
-    public static String concat(Object...array) {
+
+    public static String concat(Object... array) {
         StringBuilder builder = new StringBuilder();
         for (Object string : array) {
             builder.append(string);
         }
         return builder.toString();
     }
-    
+
     public static String join(String delim, Collection<Object> array) {
         StringBuilder builder = new StringBuilder();
         Iterator<Object> it = array.iterator();
@@ -24,8 +24,8 @@ public class Strings {
         }
         return builder.toString();
     }
-    
-    public static String join(String delim, Object...array) {
+
+    public static String join(String delim, Object... array) {
         StringBuilder builder = new StringBuilder();
         if (array.length > 0) {
             builder.append(array[0]);
@@ -35,11 +35,11 @@ public class Strings {
         }
         return builder.toString();
     }
-    
+
     public static boolean isEmpty(String string) {
         return string == null || string.trim().equals("");
     }
-    
+
     public static boolean isNotEmpty(String string) {
         return !isEmpty(string);
     }

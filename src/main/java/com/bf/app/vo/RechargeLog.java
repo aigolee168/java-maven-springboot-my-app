@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RechargeLog {
-    
+
     private int pkId;
     private long pid;
     private String uid;

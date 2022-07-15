@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class Streams {
-    
+
     public static void copy(InputStream from, OutputStream to) throws IOException {
         byte[] buffer = new byte[512];
         int len;

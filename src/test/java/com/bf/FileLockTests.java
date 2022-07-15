@@ -11,7 +11,7 @@ import java.nio.file.StandardOpenOption;
 import com.bf.app.util.Strings;
 
 public class FileLockTests {
-    
+
     public static void main(String[] args) throws IOException {
         String filename = args[0];
         if (Strings.isEmpty(filename)) {
@@ -19,8 +19,8 @@ public class FileLockTests {
             return;
         }
         File lockFile = new File(filename);
-        FileChannel fileChannel = FileChannel.open(lockFile.toPath(), 
-                StandardOpenOption.READ, 
+        FileChannel fileChannel = FileChannel.open(lockFile.toPath(),
+                StandardOpenOption.READ,
                 StandardOpenOption.WRITE,
                 StandardOpenOption.CREATE);
         FileLock lock = fileChannel.tryLock();

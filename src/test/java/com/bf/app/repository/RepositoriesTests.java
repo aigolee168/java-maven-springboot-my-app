@@ -19,30 +19,30 @@ import com.bf.app.entities.User;
 @ActiveProfiles("test")
 @ImportAutoConfiguration(classes = MybatisAutoConfiguration.class)
 @DataJpaTest(properties = {
-    "spring.jpa.defer-datasource-initialization=true",
-    "spring.jpa.generate-ddl=false",
-    "spring.jpa.hibernate.ddl-auto=none",
-    "spring.sql.init.schema-locations=classpath:schema-test.sql",
-    "spring.sql.init.data-locations=classpath:data-test.sql"
+        "spring.jpa.defer-datasource-initialization=true",
+        "spring.jpa.generate-ddl=false",
+        "spring.jpa.hibernate.ddl-auto=none",
+        "spring.sql.init.schema-locations=classpath:schema-test.sql",
+        "spring.sql.init.data-locations=classpath:data-test.sql"
 })
 class RepositoriesTests {
-    
+
     @Autowired
     AuthorityRepository authorityRepository;
-    
+
     @Autowired
     RoleRepository roleRepository;
-    
+
     @Autowired
     UserRepository userRepository;
-    
+
     @Order(1)
     @Test
     void authorityRepositoryTest() {
         List<Authority> allAuthority = authorityRepository.findAll();
         assertThat(allAuthority).isNotEmpty();
     }
-    
+
     @Order(2)
     @Test
     void roleRepository() {
@@ -55,7 +55,7 @@ class RepositoriesTests {
         List<Authority> authorityList = authorityRepository.findAllByRoleId(role.getId());
         assertThat(authorityList).isNotEmpty();
     }
-    
+
     @Order(3)
     @Test
     void userRepositoryTest() {

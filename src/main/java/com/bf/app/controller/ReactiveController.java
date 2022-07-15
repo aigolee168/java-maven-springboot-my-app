@@ -14,16 +14,16 @@ import reactor.core.publisher.Flux;
 @RestController
 @RequestMapping("reactive")
 public class ReactiveController {
-    
+
     private AuthorityService authorityService;
-    
+
     private WebClient webClient = WebClient.builder().baseUrl("http://localhost:8080/demo/").build();
-    
+
     @Autowired
     public void setAuthorityService(AuthorityService authorityService) {
         this.authorityService = authorityService;
     }
-    
+
     public void setWebClient(WebClient webClient) {
         this.webClient = webClient;
     }
@@ -32,7 +32,7 @@ public class ReactiveController {
     public Flux<Authority> authorityTree(long parentId) {
         return Flux.fromIterable(authorityService.getDescendentAuthTree(parentId));
     }
-    
+
     @GetMapping("delegate")
     public Flux<Authority> delegateAuthorityTree() {
         return webClient.get()

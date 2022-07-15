@@ -26,42 +26,42 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class KpiService {
-    
+
     private KpiMapper kpiMapper;
 
     @Autowired
     public void setKpiMapper(KpiMapper kpiMapper) {
         this.kpiMapper = kpiMapper;
     }
-    
+
     public int countUser() {
         return kpiMapper.countUser();
     }
-    
+
     public int countAuthorityByParentId(long parentId) {
         int count = kpiMapper.countAuthorityByParentId(parentId);
         log.debug("countAuthorityByParentId: {}", parentId);
         return count;
     }
-    
+
     public Map<String, Integer> getDailyRevenue() {
         List<RechargeLog> rechargeLogs = kpiMapper.selectRechargeLog();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Map<String, Integer> map = rechargeLogs.stream()
-            .collect(groupingBy(log -> format.format(log.getDate()), summingInt(RechargeLog::getRmb)));
+                .collect(groupingBy(log -> format.format(log.getDate()), summingInt(RechargeLog::getRmb)));
         return new TreeMap<>(map);
     }
-    
+
     public Map<String, Integer> getDailyPayCount() {
         List<RechargeLog> rechargeLogs = kpiMapper.selectRechargeLog();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         return rechargeLogs.stream()
-            .collect(collectingAndThen(groupingBy(
-                    log -> format.format(log.getDate()), 
-                    collectingAndThen(groupingBy(RechargeLog::getPid), Map::size)), 
-                    TreeMap::new));
+                .collect(collectingAndThen(groupingBy(
+                        log -> format.format(log.getDate()),
+                        collectingAndThen(groupingBy(RechargeLog::getPid), Map::size)),
+                        TreeMap::new));
     }
-    
+
     public Map<String, Integer> getDailyPayCount2() {
         List<RechargeLog> logs = kpiMapper.selectRechargeLog();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -86,7 +86,7 @@ public class KpiService {
         }
         return resultMap;
     }
-    
+
     public List<DailyPayCount> getDailyPayCount3() {
         return kpiMapper.getDailyPayCount();
     }

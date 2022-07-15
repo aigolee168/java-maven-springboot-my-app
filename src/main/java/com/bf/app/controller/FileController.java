@@ -15,10 +15,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 @RequestMapping("file")
 public class FileController {
-    
+
     @Autowired
     private ObjectMapper objectMapper;
-    
+
     @GetMapping("streamingUser")
     public ResponseEntity<StreamingResponseBody> streamingUser() {
         return ResponseEntity.ok()

@@ -8,9 +8,9 @@ import org.springframework.transaction.TransactionStatus;
 
 @Service
 public class TransactionalService {
-    
+
     private final PlatformTransactionManager txmgr;
-    
+
     public TransactionalService(PlatformTransactionManager txmgr) {
         super();
         this.txmgr = txmgr;
@@ -31,7 +31,7 @@ public class TransactionalService {
             throw e;
         }
     }
-    
+
     public <T> T call(Callable<T> call) {
         TransactionStatus transactionStatus = txmgr.getTransaction(null);
         T result;

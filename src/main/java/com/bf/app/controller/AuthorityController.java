@@ -13,9 +13,9 @@ import com.bf.app.service.AuthorityService;
 @RestController
 @RequestMapping("authority")
 public class AuthorityController {
-    
+
     private AuthorityService authorityService;
-    
+
     @Autowired
     public void setAuthorityService(AuthorityService authorityService) {
         this.authorityService = authorityService;

@@ -17,18 +17,18 @@ import lombok.RequiredArgsConstructor;
 @Data
 @Entity
 public class Role {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     @NonNull
     private String name;
-    
+
     private Date createTime = new Date();
-    
+
     private Byte status = (byte) 0;
-    
+
     private String authPattern = "";
 
 }

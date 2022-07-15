@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class OrderLog {
 
     private String orderId;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date;
     private String skuId;
     private BigDecimal price;
